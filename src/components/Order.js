@@ -17,7 +17,7 @@ function Order(props) {
                 set_order(JSON.parse(this.responseText));
             }
         });
-        xhr.open("POST", "http://localhost/api/v1/order");
+        xhr.open("POST", "http://89.40.2.219/api/v1/order");
         xhr.send(data);
     }, [props]);
 

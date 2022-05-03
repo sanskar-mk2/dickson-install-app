@@ -20,7 +20,7 @@ function Login(props) {
                 props.on_login(JSON.parse(this.responseText));
             }
         });
-        xhr.open("POST", "http://localhost/api/v1/login");
+        xhr.open("POST", "http://89.40.2.219/api/v1/login");
         xhr.send(data);
     });
 

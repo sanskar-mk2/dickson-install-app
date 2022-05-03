@@ -8,8 +8,8 @@ function Items(props) {
     return (
         <React.Fragment>
             {item_name.map((e, i) => (
-                <React.Fragment>
-                    <Grid key={i} item xs={3}>
+                <React.Fragment key={i}>
+                    <Grid item xs={6}>
                         {/* <span className="material-symbols-outlined">
                             category
                         </span> */}

@@ -13,11 +13,12 @@ function App() {
     };
 
     useEffect(() => {
-        set_menu("Home")
-    }, [login])
+        set_menu("Home");
+    }, [login]);
 
     const handle_menu = (data) => {
         set_menu(data);
+        if (data === "Logout") set_login({ id: 0 });
     };
 
     return (
@@ -27,7 +28,13 @@ function App() {
             ) : (
                 <React.Fragment>
                     <DrawerMenu on_menu={handle_menu} />
-                    {menu === "Home" ? <Home info={login} /> : menu === "Orders" ? <Orders info={login} /> : "" }
+                    {menu === "Home" ? (
+                        <Home info={login} />
+                    ) : menu === "Orders" ? (
+                        <Orders info={login} />
+                    ) : (
+                        ""
+                    )}
                 </React.Fragment>
             )}
         </React.Fragment>

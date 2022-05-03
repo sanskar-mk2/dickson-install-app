@@ -20,7 +20,7 @@ function Orders(props) {
             }
         });
 
-        xhr.open("POST", "http://localhost/api/v1/orders");
+        xhr.open("POST", "http://89.40.2.219/api/v1/orders");
 
         xhr.send(data);
     }, [props]);
