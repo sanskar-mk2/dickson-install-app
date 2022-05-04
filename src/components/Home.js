@@ -18,13 +18,13 @@ function Home(props) {
                             {props.info.name}
                         </Typography>
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            {props.info.type ? "Installer" : "Customer"}
+                            {props.info.type}
                         </Typography>
-                        <Typography variant="body2">
+                        {/* <Typography variant="body2">
                             Email: {props.info.email}
                             <br />
                             Contact: {props.info.phone}
-                        </Typography>
+                        </Typography> */}
                     </CardContent>
                 </Card>
             </Grid>

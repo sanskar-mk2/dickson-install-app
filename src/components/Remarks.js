@@ -1,7 +1,6 @@
 import {
     Box,
     Card,
-    CardActions,
     CardContent,
     Typography,
     Button,

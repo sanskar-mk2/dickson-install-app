@@ -6,7 +6,7 @@ import Orders from "./components/Orders";
 
 function App() {
     const [menu, set_menu] = useState("");
-    const [login, set_login] = useState({ id: 0 });
+    const [login, set_login] = useState({ user_id: 0 });
 
     const handle_login = (data) => {
         set_login(data);

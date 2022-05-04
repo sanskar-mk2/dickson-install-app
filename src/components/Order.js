@@ -3,23 +3,23 @@ import { Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/m
 import Items from "./Items";
 
 function Order(props) {
-    const [order, set_order] = useState({ id: 0 });
+    const [order, set_order] = useState(props.order);
 
-    useEffect(() => {
-        const data = new FormData();
-        data.append("id", props.id);
+    // useEffect(() => {
+    //     const data = new FormData();
+    //     data.append("id", props.id);
 
-        const xhr = new XMLHttpRequest();
-        xhr.withCredentials = false;
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.withCredentials = false;
 
-        xhr.addEventListener("readystatechange", function () {
-            if (this.readyState === this.DONE) {
-                set_order(JSON.parse(this.responseText));
-            }
-        });
-        xhr.open("POST", "http://89.40.2.219/api/v1/order");
-        xhr.send(data);
-    }, [props]);
+    //     xhr.addEventListener("readystatechange", function () {
+    //         if (this.readyState === this.DONE) {
+    //             set_order(JSON.parse(this.responseText));
+    //         }
+    //     });
+    //     xhr.open("POST", "http://89.40.2.219/api/v1/order");
+    //     xhr.send(data);
+    // }, [props]);
 
     return (
         <React.Fragment>
@@ -40,14 +40,16 @@ function Order(props) {
                             {order.order_date}
                         </Typography>
                         <Typography variant="body2">
-                            {order.project_address}
+                            Address: {order.project_address}<br />
+                            Cutomer Phone: {order.customer_phone}<br />
+                            Onsite Phone: {order.onsite_phone}<br />
                         </Typography>
                         <hr></hr>
                         <Grid container>
-                        <Items order={order} />
+                        <Items items={order.items} />
                         </Grid>
                         <CardActions>
-                            <Button onClick={()=>props.on_detail(props.id)} size="small">Add Remarks</Button>
+                            <Button onClick={()=>props.on_detail(order.order_id)} size="small">Add Remarks</Button>
                         </CardActions>
                     </CardContent>
                 </Card>

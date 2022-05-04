@@ -9,7 +9,7 @@ function Orders(props) {
 
     useEffect(() => {
         const data = new FormData();
-        data.append("id", props.info.id);
+        data.append("user_id", props.info.user_id);
 
         const xhr = new XMLHttpRequest();
         xhr.withCredentials = false;
@@ -35,8 +35,8 @@ function Orders(props) {
             <Grid container justifyContent="center">
                 { detail === 0 ?
                 (orders.map((e, i) => (
-                    <Order on_detail={handle_detail} key={i} id={e} />
-                ))) : <Remarks on_back={handle_detail} uid={props.info.id} oid={detail} />
+                    <Order on_detail={handle_detail} key={i} order={e} />
+                ))) : <Remarks on_back={handle_detail} uid={props.info.user_id} oid={detail} />
 
 }
             </Grid>
