@@ -18,12 +18,12 @@ function App() {
 
     const handle_menu = (data) => {
         set_menu(data);
-        if (data === "Logout") set_login({ id: 0 });
+        if (data === "Logout") set_login({ user_id: 0 });
     };
 
     return (
         <React.Fragment>
-            {login.id === 0 ? (
+            {login.user_id === 0 ? (
                 <Login on_login={handle_login} />
             ) : (
                 <React.Fragment>
