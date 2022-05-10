@@ -15,10 +15,13 @@ function Home(props) {
                             Welcome
                         </Typography>
                         <Typography variant="h5" component="div">
-                            {props.info.name}
+                            Name: {props.info.name}
+                        </Typography>
+                        <Typography variant="h6" component="div">
+                            Company: {props.info.company}
                         </Typography>
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            {props.info.type}
+                            Type: {props.info.type}
                         </Typography>
                         {/* <Typography variant="body2">
                             Email: {props.info.email}

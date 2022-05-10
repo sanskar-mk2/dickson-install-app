@@ -19,6 +19,13 @@ function Remarks(props) {
     const [details, set_details] = useState([]);
     const [floors, set_floors] = useState([]);
     const [remarks, set_remarks] = useState("");
+    const [status, set_status] = useState("");
+    const [images, set_images] = useState([]);
+
+    const on_file_upload = (e) => {
+        let files = e.target.files;
+        set_images(files);
+    };
 
     const handle_floor = (e) => {
         set_floor(e.target.value);
@@ -28,12 +35,53 @@ function Remarks(props) {
         set_unit(e.target.value);
     };
 
+    useEffect(() => {
+        if (details.find((e) => e.unit_number === unit) === undefined) return;
+        set_status(details.find((e) => e.unit_number === unit).status); //u
+    }, [unit, details]);
+
     const u = () => {
         return details.find((e) => e.unit_number === unit);
     };
 
     const handle_text = (e) => {
         set_remarks(e.target.value);
+    };
+
+    const handle_status = (e) => {
+        set_status(e.target.value);
+    };
+
+    const send_remarks = () => {
+        const data = new FormData();
+        data.append("unit_id", u().unit_id);
+        data.append("user_id", props.uid);
+        data.append("status", status);
+        if (remarks !== "") data.append("remarks", remarks);
+        [...images].forEach((e) => {
+            data.append("image[]", e);
+        });
+        // data.append(
+        //     "image[]",
+        //     "C:\\Users\\sohma_w4\\Downloads\\pexels-m&w-studios-90317.jpg"
+        // );
+        // data.append(
+        //     "image[]",
+        //     "C:\\Users\\sohma_w4\\Downloads\\pexels-andrea-davis-5411784.jpg"
+        // );
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = false;
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                console.log(this.responseText);
+                props.on_back(0);
+            }
+        });
+
+        xhr.open("POST", "http://89.40.2.219/api/v1/send_remarks");
+
+        xhr.send(data);
     };
 
     useEffect(() => {
@@ -138,33 +186,112 @@ function Remarks(props) {
                             </Grid>
                             <hr></hr>
                             <Grid container justifyContent="center">
-                                    <Grid item xs={12}>
-                                        <TextField fullWidth
-                                            id="standard-multiline-flexible"
-                                            label="Write remarks"
-                                            multiline
-                                            maxRows={4}
-                                            value={remarks}
-                                            onChange={handle_text}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <input 
-                                            type="file"
-                                            accept="image/*"
-                                            capture="camera"
-                                        ></input>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        {" "}
-                                        <Button fullWidth
-                                            onClick={() =>
-                                                props.on_detail(props.id)
+                                <Grid item sx={{ m: 2 }} xs={12}>
+                                    <TextField
+                                        fullWidth
+                                        id="standard-multiline-flexible"
+                                        label="Installer Remarks"
+                                        multiline
+                                        maxRows={4}
+                                        value={u().installer_remarks ?? ""}
+                                        disabled
+                                        // onChange={handle_text}
+                                    />
+                                    <div>
+                                        {u().customer_images.map((e, idx) => (
+                                            <img
+                                                height={100}
+                                                key={idx}
+                                                src={e}
+                                                alt="customer"
+                                            ></img>
+                                        ))}
+                                    </div>
+                                </Grid>
+                                <Grid item sx={{ m: 2 }} xs={12}>
+                                    <TextField
+                                        fullWidth
+                                        id="standard-multiline-flexible"
+                                        label="Customer Remarks"
+                                        multiline
+                                        maxRows={4}
+                                        value={u().customer_remarks ?? ""}
+                                        disabled
+                                        // onChange={handle_text}
+                                    />
+                                    {u().installer_images.map((e, idx) => (
+                                        <img
+                                            key={idx}
+                                            height={100}
+                                            src={e}
+                                            alt="installer"
+                                        ></img>
+                                    ))}
+                                </Grid>
+                                <Grid item sx={{ m: 2 }} xs={12}>
+                                    <TextField
+                                        fullWidth
+                                        id="standard-multiline-flexible"
+                                        label="Add Remarks Here"
+                                        multiline
+                                        maxRows={4}
+                                        value={remarks}
+                                        onChange={handle_text}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        capture="camera"
+                                        multiple
+                                        onChange={(e) => on_file_upload(e)}
+                                    ></input>
+                                </Grid>
+                                <FormControl sx={{ m: 2 }} fullWidth>
+                                    <InputLabel id="unit">Unit</InputLabel>
+                                    <Select
+                                        id="unit"
+                                        label="Unit"
+                                        value={status}
+                                        onChange={handle_status}
+                                    >
+                                        <MenuItem value="">none</MenuItem>
+                                        <MenuItem
+                                            selected={
+                                                u().status === "in progress"
                                             }
+                                            value="in progress"
                                         >
-                                            Upload
-                                        </Button>
-                                    </Grid>
+                                            in progress
+                                        </MenuItem>
+                                        <MenuItem
+                                            selected={
+                                                u().status === "not started"
+                                            }
+                                            value="not started"
+                                        >
+                                            not started
+                                        </MenuItem>
+                                        <MenuItem
+                                            selected={
+                                                u().status === "completed"
+                                            }
+                                            value="completed"
+                                        >
+                                            completed
+                                        </MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <Grid item xs={12}>
+                                    {" "}
+                                    <Button
+                                        fullWidth
+                                        onClick={() => send_remarks()}
+                                    >
+                                        Upload
+                                    </Button>
+                                </Grid>
                             </Grid>
                         </CardContent>
                     </Card>

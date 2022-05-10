@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    Grid,
+    Typography,
+} from "@mui/material";
 import Items from "./Items";
 
 function Order(props) {
-    const [order, set_order] = useState(props.order);
+    const [order] = useState(props.order);
 
     // useEffect(() => {
     //     const data = new FormData();
@@ -31,7 +38,7 @@ function Order(props) {
                             color="text.secondary"
                             gutterBottom
                         >
-                            Order# { order.order_number }
+                            Order# {order.order_number}
                         </Typography>
                         <Typography variant="h5" component="div">
                             {order.project_name}
@@ -40,16 +47,30 @@ function Order(props) {
                             {order.order_date}
                         </Typography>
                         <Typography variant="body2">
-                            Address: {order.project_address}<br />
-                            Cutomer Phone: {order.customer_phone}<br />
-                            Onsite Phone: {order.onsite_phone}<br />
+                            Street: {order.address}
+                            <br />
+                            City: {order.city}
+                            <br />
+                            State: {order.state}
+                            <br />
+                            Post Code: {order.zip}
+                            <br />
+                            Cutomer Phone: {order.customer_phone}
+                            <br />
+                            Onsite Phone: {order.onsite_phone}
+                            <br />
                         </Typography>
                         <hr></hr>
                         <Grid container>
-                        <Items items={order.items} />
+                            <Items items={order.items} />
                         </Grid>
                         <CardActions>
-                            <Button onClick={()=>props.on_detail(order.order_id)} size="small">Add Remarks</Button>
+                            <Button
+                                onClick={() => props.on_detail(order.order_id)}
+                                size="small"
+                            >
+                                Add Remarks
+                            </Button>
                         </CardActions>
                     </CardContent>
                 </Card>

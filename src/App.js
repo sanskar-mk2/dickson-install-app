@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import DrawerMenu from "./components/DrawerMenu";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Notifications from "./components/Notifications";
 import Orders from "./components/Orders";
+import Remarks from "./components/Remarks";
 
 function App() {
     const [menu, set_menu] = useState("");
@@ -33,7 +35,7 @@ function App() {
                     ) : menu === "Orders" ? (
                         <Orders info={login} />
                     ) : (
-                        ""
+                        <Notifications uid={login.user_id} />
                     )}
                 </React.Fragment>
             )}
