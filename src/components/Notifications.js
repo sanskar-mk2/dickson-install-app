@@ -66,11 +66,12 @@ function Notifications(props) {
     return (
         <>
             <button onClick={() => read_all()}>Read All</button>
-            <table>
+            <table style={{border:"1px black solid"}}>
                 <thead>
                     <tr>
                         <th>Time</th>
-                        <th>Unit ID</th>
+                        <th>Unit Number</th>
+                        <th>Floor</th>
                         <th>Message</th>
                         <th>Ack</th>
                     </tr>
@@ -79,7 +80,8 @@ function Notifications(props) {
                     {noti.map((e, i) => (
                         <tr key={i}>
                             <td>{e.created_at}</td>
-                            <td>{e.unit_id}</td>
+                            <td>{e.unit_number}</td>
+                            <td>{e.floor}</td>
                             <td>{e.message}</td>
                             <td>
                                 {e.acknowledged === "yes" ? (
