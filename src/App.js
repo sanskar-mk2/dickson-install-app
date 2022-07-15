@@ -1,44 +1,23 @@
-import React, { useEffect, useState } from "react";
-import DrawerMenu from "./components/DrawerMenu";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Notifications from "./components/Notifications";
-import Orders from "./components/Orders";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/layouts/Navbar";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Orders from "./pages/Orders";
 
 function App() {
-    const [menu, set_menu] = useState("");
-    const [login, set_login] = useState({ user_id: 0 });
-
-    const handle_login = (data) => {
-        set_login(data);
-    };
-
-    useEffect(() => {
-        set_menu("Home");
-    }, [login]);
-
-    const handle_menu = (data) => {
-        set_menu(data);
-        if (data === "Logout") set_login({ user_id: 0 });
-    };
-
     return (
-        <React.Fragment>
-            {login.user_id === 0 ? (
-                <Login on_login={handle_login} />
-            ) : (
-                <React.Fragment>
-                    <DrawerMenu on_menu={handle_menu} />
-                    {menu === "Home" ? (
-                        <Home info={login} />
-                    ) : menu === "Orders" ? (
-                        <Orders info={login} />
-                    ) : (
-                        <Notifications uid={login.user_id} />
-                    )}
-                </React.Fragment>
-            )}
-        </React.Fragment>
+        <div className="w-full flex flex-col items-center">
+            <BrowserRouter>
+                <Navbar />
+                <div className="container p-4">
+                    <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/orders" element={<Orders />} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </div>
     );
 }
 
