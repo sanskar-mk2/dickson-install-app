@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Card from "../components/orders/Card";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useOrderContext } from "../hooks/useOrderContext";
 function Orders() {
@@ -36,8 +37,7 @@ function Orders() {
     // const [error, set_error] = useState("");
     return (
         <div className="flex flex-col items-center">
-            {orders &&
-                orders.map((e) => <p key={e.order_id}>{e.project_name}</p>)}
+            {orders && orders.map((e) => <Card key={e.order_id} order={e} />)}
         </div>
     );
 }
