@@ -4,14 +4,15 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useDetailContext } from "../hooks/useDetailContext";
 import Card from "../components/details/Card";
 function Details() {
-    const [building, set_building] = useState("");
-    const [floor, set_floor] = useState("");
-    const [unit_number, set_unit_number] = useState("");
-    const [status, set_status] = useState("");
     const { dispatch, details } = useDetailContext();
     const { id } = useParams();
     const { user } = useAuthContext();
     const navigate = useNavigate();
+
+    const [building, set_building] = useState("");
+    const [floor, set_floor] = useState("");
+    const [unit_number, set_unit_number] = useState("");
+    const [status, set_status] = useState("");
 
     const filter_logic = () => {
         return details.filter(
@@ -26,6 +27,7 @@ function Details() {
     useEffect(() => {
         if (!user) navigate("/login");
         const get_details = async () => {
+            if (!user) return;
             const form = new FormData();
             form.append("user_id", user.user_id);
             form.append("order_id", id);
