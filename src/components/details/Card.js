@@ -3,10 +3,10 @@ function Card({ detail }) {
     return (
         <>
             <div className="bg-white p-6 rounded flex flex-col w-80 gap-4">
-                <p className="text-2xl">
+                <h2 className="text-2xl">
                     Unit Number{" "}
                     <span className="font-bold">{detail.unit_number}</span>
-                </p>
+                </h2>
                 <div className="flex gap-8">
                     <p className="text-xl">{detail.unit_type}</p>
                     <p className="text-xl">
