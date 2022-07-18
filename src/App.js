@@ -7,6 +7,7 @@ import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
 import Notification from "./pages/Notifications";
 import Orders from "./pages/Orders";
+import Upload from "./pages/Upload";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/orders" element={<Orders />} />
                         <Route path="/details/:id" element={<Details />} />
+                        <Route path="/upload/:id" element={<Upload />} />
                         <Route
                             path="/notifications"
                             element={<Notification />}
