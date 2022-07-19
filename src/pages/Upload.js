@@ -9,6 +9,7 @@ function Upload() {
     const { user } = useAuthContext();
     const navigate = useNavigate();
 
+    const [success, set_success] = useState("");
     const [unit, set_unit] = useState();
     const [remarks, set_remarks] = useState("");
     const [images, set_images] = useState([]);
@@ -40,8 +41,12 @@ function Upload() {
 
         if (response.status === 204) {
             console.log("success");
-            navigate("/orders");
-            return;
+            set_success(
+                "Successfully sent remarks. Redirecting in 5 seconds..."
+            );
+            setTimeout(() => {
+                return navigate("/orders");
+            }, 5000);
         } else {
             const json = await response.json();
             console.error(json);
@@ -174,6 +179,7 @@ function Upload() {
                             Send & Notify
                         </button>
                     </div>
+                    <p className="text-green-500 mt-2">{success}</p>
                 </div>
             )}
         </>

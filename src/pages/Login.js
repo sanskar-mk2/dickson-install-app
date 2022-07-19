@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 function Login() {
     const { dispatch } = useAuthContext();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const handle_login = async () => {
         const form = new FormData();
         form.append("email", email);
@@ -68,7 +68,9 @@ function Login() {
                 value="Sign me in"
             />
             <p className="text-red-500 mt-2">{error}</p>
-            <p className="text-dickson font-bold mt-10">Forgot Password?</p>
+            <Link to="/forgot-password">
+                <p className="text-dickson font-bold mt-10">Forgot Password?</p>
+            </Link>
         </div>
     );
 }

@@ -11,6 +11,11 @@ export const auth_reducer = (state, action) => {
             return {
                 user: null,
             };
+        case "FORGOT":
+            return {
+                user: null,
+                forgot_id: action.payload
+            }
         default:
             return state;
     }
