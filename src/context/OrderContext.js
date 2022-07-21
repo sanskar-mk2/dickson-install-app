@@ -1,14 +1,15 @@
 import { createContext, useReducer } from "react";
+import { OrderConstants } from "../constants/OrderConstants";
 export const OrderContext = createContext();
 
 export const order_reducer = (state, action) => {
     switch (action.type) {
-        case "ORDER":
+        case OrderConstants.ORDER:
             return {
                 orders: action.payload,
             };
         default:
-            return state;
+            throw new Error(`Unhandled type ${action.type} in order_reducer`);
     }
 };
 

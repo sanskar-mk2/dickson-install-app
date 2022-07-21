@@ -39,7 +39,8 @@ function Login() {
     const [password, set_password] = useState("");
     const [error, set_error] = useState("");
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex w-full justify-center">
+        <div className="flex flex-col w-full md:w-4/6 items-center bg-white p-8 rounded">
             <h1 className="self-start font-bold text-4xl mt-8">
                 Welcome Back!
             </h1>
@@ -71,6 +72,7 @@ function Login() {
             <Link to="/forgot-password">
                 <p className="text-dickson font-bold mt-10">Forgot Password?</p>
             </Link>
+        </div>
         </div>
     );
 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 function Card({ detail }) {
     return (
         <>
-            <div className="bg-white p-6 rounded flex flex-col w-80 gap-4">
+            <div className="bg-white grow p-6 rounded flex flex-col w-80 gap-4">
                 <h2 className="text-2xl">
                     Unit Number{" "}
                     <span className="font-bold">{detail.unit_number}</span>

@@ -59,10 +59,10 @@ function Details() {
     return (
         <>
             {details && (
-                <div className="flex flex-col w-fit p-4  mb-4  pl-10 pr-10 bg-white rounded">
+                <div className="flex flex-col w-full p-4  mb-4  pl-10 pr-10 bg-white rounded">
                     <div className="text-dickson text-2xl mb-2">Filters</div>
                     <div className="flex gap-10 flex-wrap">
-                        <div className="flex gap-2 items-center">
+                        <div className="flex grow gap-2 items-center justify-between">
                             <label className="text-xl" htmlFor="building">
                                 Building
                             </label>
@@ -82,7 +82,7 @@ function Details() {
                                 ))}
                             </select>
                         </div>
-                        <div className="flex gap-2 items-center">
+                        <div className="flex grow gap-2 items-center justify-between">
                             <label className="text-xl" htmlFor="floor">
                                 Floor
                             </label>
@@ -102,7 +102,7 @@ function Details() {
                                 )}
                             </select>
                         </div>
-                        <div className="flex gap-2 items-center">
+                        <div className="flex grow gap-2 items-center justify-between">
                             <label
                                 className="text-xl"
                                 defaultValue=""
@@ -129,7 +129,7 @@ function Details() {
                                 ))}
                             </select>
                         </div>
-                        <div className="flex gap-2 items-center">
+                        <div className="flex grow gap-2 items-center justify-between">
                             <label
                                 className="text-xl"
                                 defaultValue=""
@@ -155,7 +155,7 @@ function Details() {
                     </div>
                 </div>
             )}
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap justify-between items-center gap-2">
                 {details &&
                     filter_logic().map((e) => (
                         <Card key={e.unit_id} detail={e} />

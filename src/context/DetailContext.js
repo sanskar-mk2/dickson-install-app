@@ -1,14 +1,15 @@
 import { createContext, useReducer } from "react";
+import { DetailConstants } from "../constants/DetailConstants";
 export const DetailContext = createContext();
 
 export const detail_reducer = (state, action) => {
     switch (action.type) {
-        case "DETAIL":
+        case DetailConstants.DETAIL:
             return {
                 details: action.payload,
             };
         default:
-            return state;
+            throw new Error(`Unhandled type ${action.type} in detail_reducer`);
     }
 };
 

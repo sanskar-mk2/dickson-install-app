@@ -1,29 +1,32 @@
 import { createContext, useReducer } from "react";
+import { AuthConstants } from "../constants/AuthConstants";
 export const AuthContext = createContext();
 
 export const auth_reducer = (state, action) => {
     switch (action.type) {
-        case "LOGIN":
+        case AuthConstants.LOGIN:
+            localStorage.setItem("user", JSON.stringify(action.payload));
             return {
                 user: action.payload,
             };
-        case "LOGOUT":
+        case AuthConstants.LOGOUT:
+            localStorage.removeItem("user");
             return {
                 user: null,
             };
-        case "FORGOT":
+        case AuthConstants.FORGOT:
             return {
                 user: null,
-                forgot_id: action.payload
-            }
+                forgot_id: action.payload,
+            };
         default:
-            return state;
+            throw new Error(`Unhandled type ${action.type} in auth_reducer`);
     }
 };
 
 export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(auth_reducer, {
-        user: null,
+        user: JSON.parse(localStorage.getItem("user")),
     });
     return (
         <AuthContext.Provider value={{ ...state, dispatch }}>
