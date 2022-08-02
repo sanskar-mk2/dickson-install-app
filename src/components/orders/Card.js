@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Location from "../icons/Location";
 import ItemCard from "./ItemCard";
 function Card({ order }) {
+    const [expand, set_expand] = useState(false);
     return (
         <>
             <div className="bg-white p-6 rounded flex flex-col gap-2">
@@ -22,9 +24,13 @@ function Card({ order }) {
                         <span className="text-green-500">{order.status}</span>
                     </p>
                 </div>
+                <div className="flex justify-between">
                 <p className="mt-2 bg-dickson p-2 rounded-full w-fit text-white pl-8 pr-8">
                     ORDER NO: {order.order_number}
                 </p>
+                <p onClick={() => set_expand(!expand)} className="hover:cursor-pointer mt-2 bg-dickson p-2 rounded-full w-fit text-white pl-8 pr-8">{expand ? 'Hide' : 'Show'} Details</p>
+                </div>
+                { expand && ( <>
                 <p className="font-bold text-2xl">{order.customer_name}</p>
                 <div className="mt-2">
                     <p className="flex gap-2">
@@ -58,6 +64,7 @@ function Card({ order }) {
                         UPLOAD IMAGES
                     </p>
                 </Link>
+                </>)}
             </div>
         </>
     );

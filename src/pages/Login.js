@@ -65,7 +65,7 @@ function Login() {
             <input
                 onClick={handle_login}
                 type="button"
-                className="hover:cursor-pointer w-full mt-8 rounded-full p-4 text-white bg-yellow-600"
+                className="hover:cursor-pointer w-full mt-8 rounded-full p-4 text-white bg-dickson"
                 value="Sign me in"
             />
             <p className="text-red-500 mt-2">{error}</p>
