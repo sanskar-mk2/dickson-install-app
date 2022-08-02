@@ -75,7 +75,7 @@ function NewCredentials() {
             <input
                 onClick={handle_click}
                 type="button"
-                className="hover:cursor-pointer w-full md:w-96 mt-8 rounded-full p-4 text-white bg-yellow-600"
+                className="hover:cursor-pointer w-full md:w-96 mt-8 rounded-full p-4 text-white bg-dickson"
                 value="Next"
             />
             <p className="text-red-500 mt-2">{error}</p>
