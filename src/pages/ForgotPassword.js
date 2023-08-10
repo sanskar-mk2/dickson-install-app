@@ -11,7 +11,7 @@ function ForgotPassword() {
         const form = new FormData();
         form.append("email", email);
         const response = await fetch(
-            "http://in.dfm-dashboard.com/api/v1/request_password_change",
+            "https://dickson.s11i.com/api/v1/request_password_change",
             {
                 method: "POST",
                 headers: {

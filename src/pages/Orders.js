@@ -14,7 +14,7 @@ function Orders() {
             const form = new FormData();
             form.append("user_id", user.user_id);
             const response = await fetch(
-                "http://in.dfm-dashboard.com/api/v1/orders",
+                "https://dickson.s11i.com/api/v1/orders",
                 {
                     method: "POST",
                     headers: {

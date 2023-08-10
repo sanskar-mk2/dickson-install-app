@@ -29,7 +29,7 @@ function Upload() {
         }
 
         const response = await fetch(
-            "http://in.dfm-dashboard.com/api/v1/send_remarks",
+            "https://dickson.s11i.com/api/v1/send_remarks",
             {
                 method: "POST",
                 headers: {

@@ -10,7 +10,7 @@ function Login() {
         form.append("email", email);
         form.append("password", password);
         const response = await fetch(
-            "http://in.dfm-dashboard.com/api/v1/login",
+            "https://dickson.s11i.com/api/v1/login",
             {
                 method: "POST",
                 headers: {

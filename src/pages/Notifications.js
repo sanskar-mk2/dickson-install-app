@@ -15,7 +15,7 @@ function Notification() {
             const form = new FormData();
             form.append("user_id", user.user_id);
             const response = await fetch(
-                `http://in.dfm-dashboard.com/api/v1/retrieve_notifications`,
+                `https://dickson.s11i.com/api/v1/retrieve_notifications`,
                 {
                     method: "POST",
                     headers: {

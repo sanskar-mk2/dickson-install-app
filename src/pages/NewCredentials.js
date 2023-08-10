@@ -16,7 +16,7 @@ function NewCredentials() {
         form.append("password", password);
         form.append("password_confirmation", password_confirmation);
         const response = await fetch(
-            "http://in.dfm-dashboard.com/api/v1/change_password",
+            "https://dickson.s11i.com/api/v1/change_password",
             {
                 method: "POST",
                 headers: {

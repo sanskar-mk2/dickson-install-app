@@ -32,7 +32,7 @@ function Details() {
             form.append("user_id", user.user_id);
             form.append("order_id", id);
             const response = await fetch(
-                `http://in.dfm-dashboard.com/api/v1/details`,
+                `https://dickson.s11i.com/api/v1/details`,
                 {
                     method: "POST",
                     headers: {
