@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { BASE_URL } from "../constants/Constants";
 
 function ForgotPassword() {
     const [email, set_email] = useState("");
@@ -11,7 +12,7 @@ function ForgotPassword() {
         const form = new FormData();
         form.append("email", email);
         const response = await fetch(
-            "https://dickson.s11i.com/api/v1/request_password_change",
+            `${BASE_URL}/request_password_change`,
             {
                 method: "POST",
                 headers: {

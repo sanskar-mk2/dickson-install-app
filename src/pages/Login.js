@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { BASE_URL } from "../constants/Constants";
 
 function Login() {
     const { dispatch } = useAuthContext();
@@ -10,7 +11,7 @@ function Login() {
         form.append("email", email);
         form.append("password", password);
         const response = await fetch(
-            "https://dickson.s11i.com/api/v1/login",
+            `${BASE_URL}/login`,
             {
                 method: "POST",
                 headers: {

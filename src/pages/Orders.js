@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../components/orders/Card";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useOrderContext } from "../hooks/useOrderContext";
+import { BASE_URL } from "../constants/Constants";
 function Orders() {
     const { user } = useAuthContext();
     const { orders, dispatch } = useOrderContext();
@@ -14,7 +15,7 @@ function Orders() {
             const form = new FormData();
             form.append("user_id", user.user_id);
             const response = await fetch(
-                "https://dickson.s11i.com/api/v1/orders",
+                `${BASE_URL}/orders`,
                 {
                     method: "POST",
                     headers: {

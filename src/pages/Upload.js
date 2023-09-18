@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useDetailContext } from "../hooks/useDetailContext";
 import ItemCard from "../components/upload/ItemCard";
+import { BASE_URL } from "../constants/Constants";
 function Upload() {
     const { details } = useDetailContext();
     const { id } = useParams();
@@ -29,7 +30,7 @@ function Upload() {
         }
 
         const response = await fetch(
-            "https://dickson.s11i.com/api/v1/send_remarks",
+            `${BASE_URL}/send_remarks`,
             {
                 method: "POST",
                 headers: {

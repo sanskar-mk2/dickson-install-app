@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { BASE_URL } from "../constants/Constants";
 
 function NewCredentials() {
     const [password, set_password] = useState("");
@@ -16,7 +17,7 @@ function NewCredentials() {
         form.append("password", password);
         form.append("password_confirmation", password_confirmation);
         const response = await fetch(
-            "https://dickson.s11i.com/api/v1/change_password",
+            `${BASE_URL}/change_password`,
             {
                 method: "POST",
                 headers: {

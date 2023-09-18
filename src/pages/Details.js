@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useDetailContext } from "../hooks/useDetailContext";
 import Card from "../components/details/Card";
+import { BASE_URL } from "../constants/Constants";
 function Details() {
     const { dispatch, details } = useDetailContext();
     const { id } = useParams();
@@ -32,7 +33,7 @@ function Details() {
             form.append("user_id", user.user_id);
             form.append("order_id", id);
             const response = await fetch(
-                `https://dickson.s11i.com/api/v1/details`,
+                `${BASE_URL}/details`,
                 {
                     method: "POST",
                     headers: {
