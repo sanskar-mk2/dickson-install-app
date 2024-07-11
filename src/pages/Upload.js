@@ -90,7 +90,7 @@ function Upload() {
                     <hr />
                     <h3 className="text-xl mt-2">Installer Remarks</h3>
                     <p className="mb-2">
-                        {unit.intaller_remarks && unit.installer_remarks}
+                        {unit.installer_remarks && unit.installer_remarks}
                     </p>
                     <hr />
                     <h3 className="text-xl mt-2">Installer Images</h3>
@@ -135,7 +135,6 @@ function Upload() {
                         <input
                             type="file"
                             accept="image/*"
-                            capture="camera"
                             className="grow"
                             multiple
                             onChange={(e) => set_images(e.target.files)}
