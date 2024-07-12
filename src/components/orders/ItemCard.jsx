@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import Cog from "../icons/Cog";
 
@@ -27,7 +28,10 @@ function ItemCard({ item }) {
                     </div>
                 </>
             )}
-            <div onClick={() => set_modal(true)} className="p-4 hover:cursor-pointer bg-gray-300 rounded-xl">
+            <div
+                onClick={() => set_modal(true)}
+                className="p-4 hover:cursor-pointer bg-gray-300 rounded-xl"
+            >
                 <Cog />
             </div>
             <div className="w-24">
@@ -37,5 +41,16 @@ function ItemCard({ item }) {
         </div>
     );
 }
+
+ItemCard.propTypes = {
+    item: PropTypes.shape({
+        item_desc0: PropTypes.string,
+        item_desc1: PropTypes.string,
+        item_desc2: PropTypes.string,
+        item_name: PropTypes.string.isRequired,
+        quantity: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+            .isRequired,
+    }).isRequired,
+};
 
 export default ItemCard;

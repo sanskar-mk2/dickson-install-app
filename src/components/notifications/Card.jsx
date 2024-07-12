@@ -1,4 +1,6 @@
+import PropTypes from "prop-types";
 import moment from "moment";
+
 function Card({ notification }) {
     return (
         <>
@@ -30,10 +32,23 @@ function Card({ notification }) {
                         {notification.message}
                     </span>
                 </p>
-                <p className="text-gray-600 self-end">{moment(notification.created_at).fromNow()}</p>
+                <p className="text-gray-600 self-end">
+                    {moment(notification.created_at).fromNow()}
+                </p>
             </div>
         </>
     );
 }
+
+Card.propTypes = {
+    notification: PropTypes.shape({
+        order: PropTypes.string.isRequired,
+        unit_number: PropTypes.string.isRequired,
+        floor: PropTypes.string.isRequired,
+        building: PropTypes.string.isRequired,
+        message: PropTypes.string.isRequired,
+        created_at: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default Card;

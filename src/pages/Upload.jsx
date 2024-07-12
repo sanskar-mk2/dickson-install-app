@@ -29,16 +29,13 @@ function Upload() {
             });
         }
 
-        const response = await fetch(
-            `${BASE_URL}/send_remarks`,
-            {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                },
-                body: form,
-            }
-        );
+        const response = await fetch(`${BASE_URL}/send_remarks`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+            },
+            body: form,
+        });
 
         if (response.status === 204) {
             console.log("success");

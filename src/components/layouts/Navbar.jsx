@@ -7,9 +7,10 @@ function Navbar() {
             <div className="container">
                 <div className="flex relative container items-center justify-center font-bold">
                     <div className="absolute left-0 ml-8">
-                    <Link to="/">
-                        <LeftArrow className="w-16 text-dickson" />
-                    </Link></div>
+                        <Link to="/">
+                            <LeftArrow className="w-16 text-dickson" />
+                        </Link>
+                    </div>
                     <Link to="/">
                         <div className="w-fit hidden sm:flex justify-center flex-col">
                             <h1 className="font-bold text-6xl text-center text-dickson">

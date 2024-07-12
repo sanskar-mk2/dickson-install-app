@@ -24,8 +24,14 @@ function App() {
                         <Route path="/orders" element={<Orders />} />
                         <Route path="/details/:id" element={<Details />} />
                         <Route path="/upload/:id" element={<Upload />} />
-                        <Route path="/forgot-password" element={<ForgotPassword />} />
-                        <Route path="/new-credentials" element={<NewCredentials />} />
+                        <Route
+                            path="/forgot-password"
+                            element={<ForgotPassword />}
+                        />
+                        <Route
+                            path="/new-credentials"
+                            element={<NewCredentials />}
+                        />
                         <Route
                             path="/notifications"
                             element={<Notification />}

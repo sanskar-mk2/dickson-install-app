@@ -16,16 +16,13 @@ function NewCredentials() {
         form.append("user_id", forgot_id);
         form.append("password", password);
         form.append("password_confirmation", password_confirmation);
-        const response = await fetch(
-            `${BASE_URL}/change_password`,
-            {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                },
-                body: form,
-            }
-        );
+        const response = await fetch(`${BASE_URL}/change_password`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+            },
+            body: form,
+        });
 
         const json = await response.json();
 

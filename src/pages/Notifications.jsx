@@ -15,16 +15,13 @@ function Notification() {
             if (!user) return;
             const form = new FormData();
             form.append("user_id", user.user_id);
-            const response = await fetch(
-                `${BASE_URL}/retrieve_notifications`,
-                {
-                    method: "POST",
-                    headers: {
-                        Accept: "application/json",
-                    },
-                    body: form,
-                }
-            );
+            const response = await fetch(`${BASE_URL}/retrieve_notifications`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                },
+                body: form,
+            });
 
             const json = await response.json();
 

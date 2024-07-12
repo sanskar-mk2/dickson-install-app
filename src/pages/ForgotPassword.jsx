@@ -11,16 +11,13 @@ function ForgotPassword() {
     const handle_click = async () => {
         const form = new FormData();
         form.append("email", email);
-        const response = await fetch(
-            `${BASE_URL}/request_password_change`,
-            {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                },
-                body: form,
-            }
-        );
+        const response = await fetch(`${BASE_URL}/request_password_change`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+            },
+            body: form,
+        });
 
         const json = await response.json();
 
@@ -44,8 +41,8 @@ function ForgotPassword() {
                 PASSWORD
             </h2>
             <p className="text-center">
-                Provide your account's email for which you want to reset your
-                password!
+                Provide your account&apos;s email for which you want to reset
+                your password!
             </p>
             <input
                 value={email}

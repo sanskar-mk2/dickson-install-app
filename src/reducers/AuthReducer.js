@@ -1,8 +1,6 @@
-import { createContext, useReducer } from "react";
 import { AuthConstants } from "../constants/AuthConstants";
-export const AuthContext = createContext();
 
-export const auth_reducer = (state, action) => {
+export const auth_reducer = (_, action) => {
     switch (action.type) {
         case AuthConstants.LOGIN:
             localStorage.setItem("user", JSON.stringify(action.payload));
@@ -22,15 +20,4 @@ export const auth_reducer = (state, action) => {
         default:
             throw new Error(`Unhandled type ${action.type} in auth_reducer`);
     }
-};
-
-export const AuthContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(auth_reducer, {
-        user: JSON.parse(localStorage.getItem("user")),
-    });
-    return (
-        <AuthContext.Provider value={{ ...state, dispatch }}>
-            {children}
-        </AuthContext.Provider>
-    );
 };

@@ -1,8 +1,10 @@
-function LeftArrow({className}) {
+import PropTypes from "prop-types";
+
+function LeftArrow({ className = "" }) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`${className}`}
+            className={className}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -16,5 +18,9 @@ function LeftArrow({className}) {
         </svg>
     );
 }
+
+LeftArrow.propTypes = {
+    className: PropTypes.string,
+};
 
 export default LeftArrow;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Cog from "../icons/Cog";
 
 function ItemCard({ item }) {
@@ -13,5 +14,12 @@ function ItemCard({ item }) {
         </div>
     );
 }
+
+ItemCard.propTypes = {
+    item: PropTypes.shape({
+        item_name: PropTypes.string.isRequired,
+        quantity: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    }).isRequired,
+};
 
 export default ItemCard;
