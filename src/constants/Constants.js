@@ -1,1 +1,1 @@
-export const BASE_URL = "https://dickson.s11i.com/api/v1";
+export const BASE_URL = "https://dickson-install.seyom.in/api/v1";
